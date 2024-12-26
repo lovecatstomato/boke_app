@@ -1,0 +1,462 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+/* 主体背景 */
+body {
+  font-family: Arial, sans-serif;
+  /* height: 200vh; */
+  font-size: 18px;
+  background: #4442;
+  background: url(/img/beijing2.jpg);
+}
+
+#add {
+  display: flex;
+  justify-content: center;
+}
+
+/* 头像框架 */
+.touxing_kuangjia {
+  background-image: url(/img/touxiang_beijing.jpg);
+  background-size: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+/* 头像 */
+.touxing {
+  border-radius: 50%;
+  margin: 10% 30%;
+  box-shadow: 0 0 0 6px #fff;
+  width: 4.8em;
+  height: 4.8em;
+}
+
+/* 文字 */
+.wenzhi {
+  display: grid;
+  justify-items: center;
+}
+
+.wenzhi span {
+  margin: 1vh 0vh 1vh 0vh;
+}
+
+/* 右边框架 */
+.youbian_yangshi1 {
+  margin: 2vh 1vh;
+  width: 42em;
+  background: #4442;
+  border-radius: 8px;
+}
+
+
+/* 左边框架 */
+.zuobian_yangshi {
+  margin: 2vh 1vh;
+  height: 100%;
+  width: 12em;
+  background: #4442;
+  border-radius: 8px;
+}
+
+/* 文本框架 */
+.wenbkuangjia {
+  display: grid;
+  background: #4442;
+  border-radius: 10px;
+  margin: 18px;
+  padding: 10px;
+  transition: transform 0.3s ease-in-out;
+  color: #0c0101;
+  /* 添加过渡效果，使放大更加平滑 */
+}
+
+
+.wenbkuangjia:hover {
+  transform: scale(0.9);
+  /* 当鼠标悬停时，元素放大到原来的1.1倍 */
+  /* box-shadow: 0 2px 4px 2px #4442; */
+}
+
+.wenbkuangjia h2 {
+  margin: 10px;
+}
+
+.wenbkuangjia span:nth-child(2) {
+  margin: 10px;
+}
+
+.wenbkuangjia span:nth-child(3) {
+  margin: 10px;
+  text-align: end;
+}
+
+.loadMore {
+  display: none;
+  text-align: center;
+  /* padding: 10px; */
+  margin: 10px;
+  font-weight: bold;
+}
+
+#snowCanvas {
+  position: fixed;
+  /* Fixed positioning to cover entire screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* Put canvas behind other content */
+}
+
+.music-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.playPauseButton {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 4px 4px #d6e0e2;
+}
+
+.playPauseButton:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+.playPauseButton:focus {
+  outline: none;
+}
+
+/* 卡屏屏幕 */
+.container {
+  color: #a69797;
+  width: 100%;
+  height: 100vh;
+  background-image: url('/img/zhuti.jpg');
+  background-repeat: round;
+  display: flex;
+  justify-content: center;
+}
+
+/* 卡屏屏幕文字对齐 */
+.container_wenzhi {
+  font-style: oblique;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+/* 社交主要框架 */
+.shejiao {
+  display: flex;
+  justify-content: center;
+}
+
+.shejiao div {
+  margin: 0.2rem;
+}
+
+/* 社交图标 */
+.shejiao_tubiao {
+  height: 2rem;
+  width: 2rem;
+  margin: 4px;
+}
+
+/* 音乐主框架 */
+.yinyue_zhuti {
+  display: flex;
+  background: #FFFEFF;
+  border-radius: 18px;
+  margin: 40px 10px;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+
+/* 音乐头像 */
+.yinyue_touxiang {
+  border-radius: 50%;
+  height: 3.4em;
+  width: 3.4em;
+  position: relative;
+  box-shadow: 0 0 0 6px #fff;
+  top: -18px;
+  left: 5px;
+}
+
+/* 音乐按钮 */
+.yinyue_tubiao {
+  height: 1.4em;
+  width: 1.4em;
+}
+
+/* 自定义进度条容器 */
+.timeline-container {
+  display: flex;
+  width: 100%;
+  height: 8px;
+  background-color: #745656;
+  border-radius: 4px;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  position: relative;
+  top: -6px;
+}
+
+/* 已播放部分的进度条 */
+.timeline-played {
+  height: 100%;
+  width: 0;
+  /* 初始宽度为0 */
+  background-color: #76c7c0;
+  transition: width 0.1s;
+  /* 平滑的过渡效果 */
+}
+
+/* 时间显示 */
+.timeline-time {
+  position: relative;
+  top: -6px;
+  color: #0c0101;
+}
+
+/* 分割线 */
+.fenge_xian {
+  background: #4442;
+  margin: 20px;
+  height: 1px;
+}
+
+
+/* 动画 */
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.zhuy_kuangjia {
+  display: flex;
+  /* 水平居中 */
+  justify-content: center;
+  /* 垂直居中 */
+  align-items: center;
+  /* 使父元素高度占满视口高度 */
+  height: 100vh;
+}
+
+.zhuy {
+  box-shadow: 0 0 0 9999em rgb(99, 104, 128);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 50%;
+  width: 90vh;
+  height: 90vh;
+  margin: auto;
+}
+
+.zhuy div {
+  padding: 10px;
+}
+
+.zhuy:hover {
+  transition: all 1s ease-out;
+  transform: scale(0.9);
+}
+
+/* .biaot:hover {
+  transition: all 1s ease-out;
+  transform: scale(1.1);
+} */
+
+.biaot {
+  text-align: center;
+  color: #60667E;
+  font-size: 3vh;
+  font-weight: bold;
+}
+
+.biaot_xiaobiaot {
+  color: #60667E;
+  font-size: 3vh;
+  font-weight: bold;
+}
+
+#snowCanvas {
+  position: fixed;
+  /* Fixed positioning to cover entire screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* Put canvas behind other content */
+}
+
+/* 主框架样式 */
+.zhukuangjia_kuangjia {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+/* 按钮样式 */
+.tuic_anniu {
+  position: fixed;
+  padding: 1rem 2rem;
+  font-size: 18px;
+  color: #fff;
+  background: #4442;
+  /* border: none; */
+  border-radius: 8px;
+  /* 动画 */
+  transition: all 0.3s ease;
+  /* 鼠标悬浮显示 */
+  cursor: pointer;
+}
+
+/* 按钮鼠标悬浮的时候 */
+.tuic_anniu:hover {
+  background: linear-gradient(45deg, #836fff, #6a5acd);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* 按钮鼠标点击的时候 */
+.tuic_anniu:active {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+}
+
+/* 定义 Markdown 内容的全局样式 */
+.youbian_yangshi {
+  margin: 10px;
+  width: 800px;
+  background: rgb(255, 255, 255);
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+/* .youbian_yangshi {
+  
+} */
+
+/* 标题样式 */
+.youbian_yangshi h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.youbian_yangshi h2 {
+  font-size: 1.75em;
+  margin-bottom: 0.5em;
+}
+
+/* 段落样式 */
+.youbian_yangshi p {
+  margin-bottom: 1em;
+}
+
+/* 链接样式 */
+.youbian_yangshi a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.youbian_yangshi a:hover {
+  text-decoration: underline;
+}
+
+/* 列表样式 */
+.youbian_yangshi ul,
+.youbian_yangshi ol {
+  margin: 1em 0;
+  padding-left: 20px;
+}
+
+.youbian_yangshi ul li,
+.youbian_yangshi ol li {
+  margin-bottom: 0.5em;
+}
+
+#snowCanvas {
+  position: fixed;
+  /* Fixed positioning to cover entire screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* Put canvas behind other content */
+}
+
+/* 媒体查询，当视口宽度小于600px时应用 */
+@media (max-width: 1000px) {
+
+  /* 右边框架 */
+  .youbian_yangshi {
+    width: 100%;
+  }
+
+  /* 左边框架 */
+  .zuobian_yangshi {
+    display: none;
+  }
+
+  .youbian_yangshi {
+    width: 100%;
+  }
+
+  .zhuy {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .zhuy:hover {
+    transition: all 1s ease-out;
+    transform: scale(0.9);
+  }
+
+  .biaot {
+    color: #60667E;
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .biaot_xiaobiaot {
+    color: #60667E;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+
+}
